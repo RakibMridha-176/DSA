@@ -1,56 +1,38 @@
 #include<iostream>
 using namespace std;
 
-class node{
-    public:
+struct node{
     int data;
-    node * next;
-
-    node( int val){
-        data = val;
-        next = NULL;
-
-    }
+    struct node *next;
 };
+struct node *head;
 
-class list{
-    node * head;
-    node * tail;
-    
-    public:
-    list(){
-        head =  tail = NULL;
-    }
+void insert_first(int val)
+{
 
-    void push_insert( int val){
-        node * newNode = new node(val);
-        if(head == NULL){
-            head = tail = newNode;
-            return;
-        }
-        else{
-            newNode -> next = head;
-            head = newNode;
-        }
-    }
-    void print(){
-        node* temp = head;
-        while(temp != NULL){
-            cout<< temp-> data << " ";
-            temp = temp-> next;
-        }
-        cout<<endl;
-    }
-};
-int main(){
-    list x;
-    x.push_insert(1);
-    x.push_insert(2);
-    x.push_insert(3);
-    x.push_insert(4);
-
-    x.print();
-
-    return 0;
+    node *temp = new node;
+    temp ->data = val;
+    temp -> next = head;
+    head = temp;
 
 }
+void show_list()
+{
+    node *temp = head;
+    while(temp !=  NULL)
+    {
+        cout<<temp->data<< ", ";
+        temp = temp->next;
+    }
+    cout<<endl;
+}
+int main(){
+    insert_first(8);
+    insert_first(5);
+    insert_first(4);
+    insert_first(9);
+    show_list();
+
+}
+
+
